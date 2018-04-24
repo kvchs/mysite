@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#<button onclick="function_ajax()" type="button"></button>#}
+<input type="button" onclick="function_ajax()" value="ajax提交">
+<script>
+    function function_ajax() {
+        function createXMLHttpRequest() {
+        var xmlHttp;
+        // 适用于大多数浏览器，以及IE7和IE更高版本
+        try{
+            xmlHttp = new XMLHttpRequest();
+        } catch (e) {
+            // 适用于IE6
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                // 适用于IE5.5，以及IE更早版本
+                try{
+                    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e){}
+            }
+        }
+        return xmlHttp;
+    }
+        var xmlhttp = createXMLHttpRequest();
+        xmlhttp.open("POST", "/blog/ajax_receive/", true);
+        {# xmlhttp.open("GET", "/blog/ajax_receive", true);  #}
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xmlhttp.send("name=ajax_post");
+        xmlhttp.onreadystatechange=function () {
+        {#alert(xmlhttp.readyState)#}
+        if(xmlhttp.readyState==4 && xmlhttp.status==200){
+            var data = xmlhttp.responseText;
+            alert(data)
+        }
+    };
+    }
+</script>
+</body>
+</html>

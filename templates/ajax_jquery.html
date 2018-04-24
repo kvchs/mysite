@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="func1()">submit</button>
+<script src="/static/jquery-3.3.1.min.js"></script>
+
+<script>
+    {#  function func1() {#}
+    {#    console.log(arguments);#}
+    {#    Test();#}
+
+    {#function Test(){#}
+        {#$.post()#}
+    {#    $.get("/blog/jquery_test/", {name:"charley", function(data){#}
+    {#        alert(data);#}
+    {#        }});#}
+
+    function func1() {
+        $.ajax({
+    url:"/blog/jquery_test/",
+    type:"POST",
+    {#data:{a:1, b:[3,4]},#}
+    {#traditional:true#}
+            {#processDate:false#}
+    dateType: "json",
+    success:function (data) {
+        console.log(data)
+    },
+    error:function (data) {
+        alert(data)
+    }
+    })
+    }
+
+</script>
+</body>
+</html>

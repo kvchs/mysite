@@ -1,0 +1,24 @@
+{% load dispaly_name %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% verbatim %}
+<h1>welcome {{ name }}</h1>
+{% endverbatim %}        {# 不让name定义为变量 #}
+
+{{ name }}
+{% connect_name name %}
+{{ name|connect_name }}
+
+{# filter用于条件判定语句 #}
+{% if name|connect_name > "charley_chentag function" %}
+<p>test filter function</p></br>
+    {% else %}
+    <a>www.baidu.com</a>
+{% endif %}
+</body>
+</html>

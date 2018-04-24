@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#<form action={% url 'newName' %} method="post">      <!-- 使用URL的别名 -->#}
+<form action="/blog/login/" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" value="submit">
+   {% csrf_token %}    {#  用于生成csrf_token的标签，用于防跨站攻击验证。注意如果你在view的里用的是render_to_response方法，不会生效#}
+</form>
+<h1>success {{ name }}</h1>
+</br>
+{{ name2 }}
+
+</body>
+</html>

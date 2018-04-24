@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/userInfo" method="post">
+    <p>姓名:<input type="text" name="username"> </p>
+    <p>性别:<input type="text" name="sex"> </p>
+    <p>邮箱:<input type="text" name="email"> </p>
+    <p><input type="submit" name="submit"> </p>
+</form>
+
+</br>
+<h1>显示数据</h1>
+<table border="1px">
+    <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>邮箱</td>
+
+    </tr>
+
+    {% for i in user_list %}
+        <tr>
+        <td>{{ i.username }}</td>
+        <td>{{ i.sex }}</td>
+        <td>{{ i.email }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script>
+    $("h1").css("color", "red")
+</script>
+{{ list.2 }}
+{{ list.2|add:5 }}
+{{ list }}
+{{ dict.username }}
+{{ dict }}
+{{ date.year }}    {#可以取得属性#}
+{{ person }}
+{{ person.age }}
+{% if False %}
+    <p>hello</p>
+{% elif date %} }}
+    <p>test message</p>
+{% endif %}
+{% for i in dict %}
+<p>{{ forloop.counter0 }} : {{ i }}</p>
+{% endfor %}
+
+{{ s|upper }}    {# filter 的使用 #}
+{{ s|lower }}
+{{ s|capfirst }}
+</br>
+{#{% autoescape off %}#}
+{#{{ url }}#}
+{#{% endautoescape %}#}
+
+{{ url|safe }}
+</body>
+</html>
